@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <base href="/">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='shortcut icon' type='image/x-icon' href='hosefaicon.ico' />
+    <title>Livraria</title>
+    <link href="~/bower_components/porto_admin_vendor/assets/stylesheets/theme.css" rel="stylesheet" />
+    <link href="~/bower_components/porto_admin_vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body ng-init="app">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <img src="~/images/niso.png" class="navbar-brand" id="logo" />
+
+            </div>
+            <div class="navbar-collapse collapse">
+
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+        <footer class=" navbar-fixed-bottom container-fluid">
+            <p>&copy; @DateTime.Now.Year - Análise e desenvolvimento por Marcelo Rocha ®</p>
+        </footer>
+    </div>
+
+
+    <div id="myOverlay">
+        <div id="loader"></div>
+
+    </div>
+
+
+</body>
+</html>
+
+<!-- Vendor -->
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/bower_components/porto_admin_vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+<!-- Specific Page Vendor -->
+<script src="~/bower_components/porto_admin_vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+<script src="~/bower_components/porto_admin_vendor/jquery-autosize/jquery.autosize.js"></script>
+
+
+<!--Application Js configs files-->
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/angular-resource.min.js"></script>
+<script src="~/Scripts/angular-loader.min.js"></script>
+<script src="~/Scripts/angular-sanitize.min.js"></script>
+<script src="~/Scripts//angular-animate.min.js"></script>
+<script src="~/Scripts/angular-route.min.js"></script>
+<script src="~/Scripts/angular-ngStorage.js"></script>
+<script src="~/Scripts/angular-md5.js"></script>
+
+
+<script src="~/app/common/config/app.js"></script>
+<script src="~/app/common/config/config.route.js"></script>
+
+
+<!-- Globals components -->
+<script src="~/app/common/globals/loadAnimeService.js"></script>
+<script src="~/app/common/globals/locationhostService.js"></script>
+<script src="~/app/common/globals/messageService.js"></script>
+
+<!-- Bower components -->
+<script src="~/bower_components/bootstrap3-dialog/src/js/bootstrap-dialog.js"></script>
+<script src="~/bower_components/ng-cpf-cnpj-validate/validate-cnpj-directive.js"></script>
+<script src="~/bower_components/angular-ui-mask/dist/mask.min.js"></script>
+
+<!-- AngularJS Directives -->
+<script src="~/app/common/directives/directives.js"></script>
+
+<!-- angular Services order by vs order-->
+<script src="~/app/services/livroService.js"></script>
+
+
+
+<!-- AngularJS Controllers -->
+<script src="~/app/controller/LivroCtrl.js"></script>
+
+
+

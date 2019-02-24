@@ -1,0 +1,122 @@
+﻿<style>
+    .required {
+        color: red;
+    }
+</style>
+
+
+
+<section class="panel container-fluid" ng-controller="LivroCtrl as vmLivro">
+    <header class="panel-heading row">
+        <h3 class="col-xs-12 col-md-9" ng-show="vmLivro.tela==='Consulta'">
+            Portal da Empresa
+        </h3>
+        <h3 class="col-xs-10 col-sm-10 col-md-10" ng-show="vmLivro.tela==='Cadastro'">
+            Cadastro de Livros
+        </h3>
+
+        <h3 class="col-xs-12 col-md-3 text-right" ng-show="vmLivro.tela==='Consulta'">
+            <button class="btn btn-primary" ng-click="vmLivro.loadGrid();"><i class="glyphicon glyphicon-refresh"> Atualizar</i></button>
+
+            <button class="btn btn-primary" ng-click="vmLivro.goCadastro();"><i class="glyphicon glyphicon-file"> Novo</i></button>
+        </h3>
+    </header>
+
+    <section class="panel panel-body" ng-show="vmLivro.tela==='Consulta'">
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>ISBN</th>
+                        <th>Autor</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Data Publicação</th>
+                        <th colspan="2">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="Livro in vmLivro.bagLivro | orderBy:'nome' ">
+                        <td>{{Livro.Codigo}}</td>
+                        <td>{{Livro.ISBN}}</td>
+                        <td>{{Livro.Nome}}</td>
+                        <td>{{Livro.Autor}}</td>
+                        <td>{{Livro.Preco}}</td>
+                        <td>{{Livro.DataPublicacao}}</td>
+                        <td>{{Livro.CaminhoImg}}</td>
+
+                        <td style="cursor:pointer"><i class="glyphicon glyphicon-edit" ng-click="vmLivro.goEditar(Livro);" title="Editar"></i></td>
+                        <td style="cursor:pointer"><i class="glyphicon glyphicon-remove" ng-click="vmLivro.goDeletar(Livro.codigo);" title="Deletar"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel-body" ng-show="vmLivro.tela==='Cadastro'">
+
+        <form name="LivroForm" novalidate>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-2 col-md-2 pull-right" ng-class="{'has-error': LivroForm.data.$touched && LivroForm.data.$invalid }">
+                    <label class="col-xs-12 control-labelcontrol-label">Código <i class="required">*</i></label>
+                    <input type="text" class="form-control" name="codigo" ng-model="vmLivro.Codigo"
+                           maxlength="200" ng-readonly="true" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-2 col-md-2" ng-class="{'has-error': LivroForm.nfeNumero.$touched && LivroForm.nfeNumero.$invalid }">
+                    <label class="control-label">ISBN <i class="required">*</i></label>
+                    <input type="text" class="form-control" name="nome" ng-model="vmLivro.ISBN"
+                           placeholder="Número da nota fiscal" maxlength="22" required />
+                </div>
+
+
+                <div class="col-xs-12 col-sm-5 col-md-5" ng-class="{'has-error': LivroForm.nome.$touched && LivroForm.nome.$invalid }">
+                    <label class="control-label">Nome do Livro <i class="required">*</i></label>
+                    <input type="text" class="form-control" name="nome" ng-model="vmLivro.Nome"
+                           placeholder="nome do Livro" maxlength="200" required />
+                </div>
+
+
+
+                <div class="col-xs-12 col-sm-3 col-md-3" ng-class="{'has-error': LivroForm.dataPublicacao.$touched && LivroForm.dataPublicacao.$invalid }">
+                    <label class="control-label">Data Publicação <i class="required">*</i></label>
+                    <input type="text" class="form-control" name="dataPublicacao" ng-model="vmLivro.DataPublicacao"
+                           placeholder="" maxlength="25" required />
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-5" ng-class="{'has-error': LivroForm.autor.$touched && LivroForm.autor.$invalid }">
+                    <label class="control-label">Autor</label>
+                    <input type="text" class="form-control" name="autor" ng-model="vmLivro.Autor"
+                           placeholder="digite o nome do montator do Livro" maxlength="200" />
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4" ng-class="{'has-error': LivroForm.preco.$touched && LivroForm.preco.$invalid }">
+                    <label class="control-label">Preço </label>
+                    <input type="text" class="form-control" name="preco" ng-model="vmLivro.Preco"
+                           placeholder="digite o nome do operador de teste" maxlength="200" />
+
+                </div>
+
+
+                
+            </div>
+        </form>
+
+
+    </section>
+
+    <footer class="text-right col-xs-12 col-md-12" ng-show="vmLivro.tela!=='Consulta'">
+        <button class="btn btn-primary" ng-click="vmLivro.goSaveOrUpdate();" ng-disabled="LivroForm.$invalid"><i class="glyphicon glyphicon glyphicon-floppy-disk"> Salvar</i></button>
+        <button class="btn btn-default" ng-click="vmLivro.goConsulta();"><i class="glyphicon glyphicon glyphicon-backward"> Voltar</i></button>
+
+
+    </footer>
+
+
+</section>
+
+
+

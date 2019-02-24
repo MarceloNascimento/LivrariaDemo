@@ -1,0 +1,43 @@
+﻿<style>
+    .required {
+        color: red;
+    }
+</style>
+
+
+
+<section class="panel row" ng-controller="LoginCtrl as vmLogin">
+
+    <div class="panel-heading">
+        <h1 class="panel-title">
+            Bem-vindo ao sistema, ao
+            <b class="text-info"> Gestor de equipamentos e rastreios !</b>
+        </h1>
+    </div>
+
+    <div class="panel-body col-xs-12 col-sm-4 col-md-4">
+        <form name="formLogin" novalidate>
+            <div class="form-group">
+                <label for="text">Email address:</label>
+                <input type="text" name="userName" class="form-control" ng-model="vmLogin.usuario.userName">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="password" class="form-control" ng-model="vmLogin.usuario.password">
+            </div>
+            <div class="form-group">                
+                <button class="btn btn-primary" ng-click="vmLogin.realizaLogin()">
+                    <i class="glyphicon glyphicon-send"> Logar</i>
+                </button>
+            </div>
+            <div class="form-group">
+                <span class="text-warning" ng-show="vmLogin.LoginError.length > 0">{{vmLogin.LoginError}}</span>
+            </div>
+            
+        </form>
+    </div>
+
+</section>
+
+
+
